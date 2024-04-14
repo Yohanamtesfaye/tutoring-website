@@ -13,8 +13,8 @@ const Register = () => {
 
      <div className={`mt-24  flex justify-center items-center ${fadeIn ? 'fade-in' : ''}`}>        
 
-     <div className="flex rounded-xlg py-20 shadow mx-32 bg-white">
-        <img className="rounded-t-lg  w-1/2 ml-10 md:block hidden" width={'550px'}src={logo} alt="" />
+     <div className="flex rounded-xlg shadow mx-32 bg-white">
+        <img className="rounded-t-lg  w-1/2 ml-10 md:block hidden" src={logo} alt="" />
         <div className="p-5  ">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 mt-20"><FaCheckCircle className='text-[#4a154b] mr-5 inline-block'/>Register As</h5>
        

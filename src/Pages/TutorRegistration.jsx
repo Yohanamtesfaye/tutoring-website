@@ -13,6 +13,7 @@ import math from '../assets/math.png'
 import chemistry from '../assets/chemistry.png'
 import biology from '../assets/biology.png'
 import { UserInfo } from '../App';       
+import logo from '../assets/logoo.png'
 export const TutorRegistration = () => {
     const [fadeIn, setFadeIn] = useState(false);
   useEffect(() => {
@@ -94,12 +95,14 @@ export const TutorRegistration = () => {
     };
 
     return (
-        <div className={`box ${fadeIn ? 'fade-in' : ''}`}>
+        <div className={`box px-10 ${fadeIn ? 'fade-in' : ''}`}>
             
         <form className="form-container" onSubmit={handleSubmit}>
-            <h1>Abogida Tutors</h1>
+        <div className='flex justify-center items-center'>
+               <img src={logo} width={'200px'}alt=""  />
+            </div>
             {index > 0 && <p className='mt-10 underline font-bold ' onClick={back}> Back</p>}
-            <div className='flex justify-center items-center mt-10 text-2xl font-bold mb-4'> <p>{question.question}</p></div>
+            <div className='flex justify-center items-center mt-10 lg:text-2xl text-lg font-bold mb-4'> <p>{question.question}</p></div>
            {question.name !== "location"&& question.type !== 'file' && question.name !=='full_name' && question.name !=='level' && question.name!== 'subject'&&<input
                 className='hover:shadow-sm hover:shadow-[#4a154b] '
                     type={question.type}
