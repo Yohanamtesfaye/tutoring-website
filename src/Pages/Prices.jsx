@@ -70,11 +70,6 @@ export const Prices = () => {
         <div className={`grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ${fadeIn ? 'fade-in' : ''}`}>
           <div className='flex shadow-lg p-5 rounded-xl bg-white'>
             <div>
-              <img src={g} alt='preschool' className='rounded-xl h-[100px] pl-3' />
-            </div>
-          </div>
-          <div className='flex shadow-lg p-5 rounded-xl bg-white'>
-            <div>
               <img src={i8} alt='preschool' className='rounded-xl h-[100px] pl-3' />
             </div>
             <div className='mt-16'>

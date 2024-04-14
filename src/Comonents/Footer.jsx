@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-[#4a154b] rounded-t-3xl text-white overflow-hidden py-8">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container lg:flex mx-20 justify-between items-center">
         <div>
           <h2 className="text-xl font-semibold mb-4">Contact Us</h2>
           <p>Email: Abogida@gmail.com</p>

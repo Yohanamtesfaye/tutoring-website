@@ -94,32 +94,45 @@ const Home = () => {
             <div className='animated-img md:block hidden  p-8'>
           <img src={client} width={'800px'} alt="Tutor" className=' h-auto animate-fadeInRight' />
         </div>
-          </div>    
-           
-          
+          </div>              
           </> }
           {username == null ? <>
             <div className='bg-[#F4EDE4] '>
               <div className='flex justify-center font-bold text-center text-4xl mb-5 p-3  '>Explore Our Grade Options</div>
-              <div > 
-              <Slider {...settings}  > 
-              {HomeData.map((option, index) => (
-               
-              <div key={index} className='lg:flex justify-center mb-10  flex flex-col py-10   ' >
-              <div className=' ml-10 mr-10 flex shadow-lg p-10 rounded-xl px-2 my-10 bg-white '>
-              <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold '>
-                {option.id}
-              </div> 
-              <div className=' mt-10'>
-                <div className='mt-5 text-2xl font-serif font-bold'>{option.name} </div>
-                <div className='mb-5 text-lg'>{option.descp} </div>
-              </div>
-             </div>
-              </div>
-             
-                 ))}
-             </Slider>
-            </div>
+              <div className="lg:hidden">
+  {HomeData.map((option, index) => (
+    <div key={index} className='lg:flex justify-center mb-10'>
+      <div className='mx-auto lg:mx-10 w-full lg:w-auto flex-shrink-0 shadow-lg p-8 rounded-xl my-10 bg-white'>
+        <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold'>
+          {option.id}
+        </div>
+        <div className='mt-6'>
+          <div className='mt-4 text-xl font-serif font-bold'>{option.name}</div>
+          <div className='mt-4 text-lg'>{option.descp}</div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<div className="hidden lg:block">
+  <Slider {...settings}>
+    {HomeData.map((option, index) => (
+      <div key={index} className='lg:flex justify-center mb-10'>
+        <div className='mx-auto lg:mx-10 w-full lg:w-auto flex-shrink-0 shadow-lg p-8 rounded-xl my-10 bg-white'>
+          <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold'>
+            {option.id}
+          </div>
+          <div className='mt-6'>
+            <div className='mt-4 text-xl font-serif font-bold'>{option.name}</div>
+            <div className='mt-4 text-lg'>{option.descp}</div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </Slider>
+</div>
+
 
               </div>
               <div className='lg:flex justify-between bg-[#F4EDE4]  items-center'>
