@@ -95,7 +95,7 @@ export const StudentRegistration = () => {
     };
     console.log(question)
     return (
-        <div className={`box mt-32 relative mx-12 ${fadeIn ? 'fade-in' : ''}`}>
+        <div className={`box mt-32 relative mx-6 ${fadeIn ? 'fade-in' : ''}`}>
             
         <form className="form-container" onSubmit={handleSubmit}>
             <div className='flex justify-center items-center'>

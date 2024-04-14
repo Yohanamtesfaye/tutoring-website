@@ -95,7 +95,7 @@ export const TutorRegistration = () => {
     };
 
     return (
-        <div className={`box px-10 ${fadeIn ? 'fade-in' : ''}`}>
+        <div className={`box px-5 ${fadeIn ? 'fade-in' : ''}`}>
             
         <form className="form-container" onSubmit={handleSubmit}>
         <div className='flex justify-center items-center'>
