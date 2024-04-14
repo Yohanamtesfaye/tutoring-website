@@ -14,6 +14,7 @@ import biology from '../assets/biology.png'
 import collage from '../assets/collage.png'
 import location from '../assets/location.jpg'
 import '../App.css';
+import logo from '../assets/logoo.png'
 
 export const StudentRegistration = () => {
     let [index, setIndex] = useState(0);
@@ -94,13 +95,15 @@ export const StudentRegistration = () => {
     };
     console.log(question)
     return (
-        <div className={`box mt-32 relative ${fadeIn ? 'fade-in' : ''}`}>
+        <div className={`box mt-32 relative mx-12 ${fadeIn ? 'fade-in' : ''}`}>
             
         <form className="form-container" onSubmit={handleSubmit}>
-            <h1 className='text-[#4a154b] '>Abogida Tutor</h1>
+            <div className='flex justify-center items-center'>
+               <img src={logo} width={'200px'}alt=""  />
+            </div>
             {index > 0 && <p className='mt-10 underline font-bold ' onClick={back}> Back</p>}
             {question.type === "text" ?( <div>
-                <div className='flex justify-center items-center mt-10 text-2xl font-bold mb-4'> <p>{question.question}</p></div>
+                <div className='flex justify-center items-center  lg:text-2xl font-bold mb-4'> <p>{question.question}</p></div>
                 {question.name !== "subject" && question.name !== "level"&& question.name !== "location"&&<input
                 className='hover:shadow-sm hover:shadow-[#4a154b] '
                     type={question.type}
@@ -114,7 +117,7 @@ export const StudentRegistration = () => {
                 {question.name === "subject" ? (<>
                     <p className='text-center leading-8 text-gray-600 font-bold max-w-md block mx-auto'>{question.des}</p>
                     <div>
-                        <select name={question.name} onSelect={handleChange} onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 lg:px-72 ml-3 py-2 mb-5 rounded-lg ' id="">
+                        <select name={question.name} onSelect={handleChange} onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 lg:px-72 max-md:px-16 lg:ml-3 py-2 mb-5 rounded-lg ' id="">
                             <option value="">Subject</option>
                             <option value="All">All</option>
                             <option value="English">English</option>
@@ -123,10 +126,10 @@ export const StudentRegistration = () => {
                             <option value="Social Studies">Social Studies</option>
                          </select>
                     </div>
-                <div className=' p-14 grid grid-cols-3 gap-16'>
-                    <img src={chemistry}  width={'200px'}/>
-                    <img src={math}  width={'200px'}/>  
-                    <img src={biology}  width={'150px'} />
+                <div className=' flex px max-md:w-20 w-44'>
+                    <img src={chemistry}  />
+                    <img src={math} className='lg:ml-20 ml-5' />  
+                    <img src={biology} className='lg:ml-20 ml-5'   />
                     
                 </div>
                 
@@ -134,7 +137,7 @@ export const StudentRegistration = () => {
                 {question.name === "level" ? (<>
                     <p className='text-center leading-8 text-gray-600 font-bold max-w-md block mx-auto'>{question.des}</p>
                     <div>
-                        <select name={question.name} onSelect={handleChange} onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 lg:px-72 ml-3 py-2 mb-5 rounded-lg ' id="">
+                        <select name={question.name} onSelect={handleChange} onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 max-md:px-16 lg:px-72 ml-3 py-2 mb-5 rounded-lg ' id="">
                             <option value="">level</option>
                             <option value="kindergarten">kindergarten</option>
                             <option value="Grade 1">Grade 1</option>
@@ -168,9 +171,9 @@ export const StudentRegistration = () => {
                 </div>
                 </>) : null}
                 {question.name === "location" ? (<>
-                    <img src={location}  width={'150px'} className='lg:ml-72 ml-24 md:ml-64'/>
+                    <img src={location}  width={'150px'} className='lg:ml-72 ml-16 md:ml-60'/>
                     <p className='text-center leading-8 text-gray-600 font-bold max-w-md block mx-auto'>{question.des}</p>
-                    <select name={question.name} onSelect={handleChange} onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 lg:px-72 ml-3 py-2 mb-5 rounded-lg ' id="">
+                    <select name={question.name} onSelect={handleChange} onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600  lg:px-72 ml-3 py-2 mb-5 rounded-lg ' id="">
                             <option value="">Location</option>
                             <option value="kality">Addis Ababa Kality</option>
                             <option value="saris">Addis Ababa Saris</option>
@@ -183,7 +186,7 @@ export const StudentRegistration = () => {
             </div>):(
                 <>
                  <div>
-                 <div className='flex justify-center items-center mt-10 text-4xl font-bold mb-4'><p>{question.question}</p></div>
+                 <div className='flex justify-center items-center mt-3 lg:text-4xl text-xl font-bold mb-4'><p>{question.question}</p></div>
                     <div>
                         <label className='border inline-flex items-center border-[#4a154b] p-5 ' id='p'>
                             <input

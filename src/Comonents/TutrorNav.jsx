@@ -7,11 +7,10 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import axios from "axios";
 import TutorNotification from "../Pages/TutorNotification";
-import logo from '../assets/logoo.png'
+import logo from '../assets/logo.jpg'
 const TutrorNav = () => {
   const [notification, setNotification] = useState([]);
   const [notify, setNotify] = useState(false);
-  
   const navigate = useNavigate()
   const handleLogout = () => {
     localStorage.removeItem('username');
@@ -23,7 +22,7 @@ const TutrorNav = () => {
   const fetch = async () => {
     const id = localStorage.getItem('id')
     try{
-        const ress = await axios.get(`https://tutor-website-backend.onrender.com/core/api/tutor/dashboard/${id}/tutor-notifications/`)
+        const ress = await axios.get(`http://127.0.0.1:8000/core/api/tutor/dashboard/${id}/tutor-notifications/`)
         console.log(ress.data)
         setNotification(ress.data);
 
@@ -46,7 +45,7 @@ const TutrorNav = () => {
           notify && setNotify(!notify);
         }}
       >
-        <div><img src={logo} alt="logo" width={'50px'} /></div>
+        <div><img src={logo} alt="logo" width={'100px'} /></div>
         <div className="flex px-10">
           <Link to="/tutor" className="text-[#4a154b] font-bold hover:text-gray-200 mr-6">
             Home
@@ -74,7 +73,6 @@ const TutrorNav = () => {
             <TutorNotification
             notification={notification}
             setNotification={setNotification}
-            fetch={fetch}
           />
         </div>
       )}

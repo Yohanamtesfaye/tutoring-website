@@ -31,7 +31,7 @@ export const UserInfo = createContext()
 function App() {
   const [info,setInfo] = useState({username:'this is'})
   const apiUrl = process.env.REACT_APP_API_URL;
-  console.log(apiUrl)
+  // console.log(apiUrl)
   return (
     <>
     <div>

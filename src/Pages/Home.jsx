@@ -14,6 +14,7 @@ import icon3  from '../assets/icon3.jpeg';
 import icon4  from '../assets/icon4.jpeg';
 import faq  from '../assets/faq.jpg';
 import client from '../assets/client.png'
+import trusted from '../assets/trusted.png'
 import '../App.css';
 import { Link } from 'react-router-dom';
 import TutorInfo from '../Comonents/TutorInfo';
@@ -55,7 +56,6 @@ const Home = () => {
     autoplaySpeed: 4000,
     pauseOnHover: true
   };
-
   return (
     <>
     <div className={`bg-white font-serif h-screen text-black ${fadeIn ? 'fade-in' : ''}`}>
@@ -99,7 +99,7 @@ const Home = () => {
           {username == null ? <>
             <div className='bg-[#F4EDE4] '>
               <div className='flex justify-center font-bold text-center text-4xl mb-5 p-3  '>Explore Our Grade Options</div>
-              <div className="lg:hidden">
+              <div className="lg:hidden px-10">
   {HomeData.map((option, index) => (
     <div key={index} className='lg:flex justify-center mb-10'>
       <div className='mx-auto lg:mx-10 w-full lg:w-auto flex-shrink-0 shadow-lg p-8 rounded-xl my-10 bg-white'>
@@ -196,7 +196,7 @@ const Home = () => {
 <div className='flex  bg-white '>
   <img className='lg:w-1/2 md:block hidden m-5 h-[400px]' src={faq} alt="question marks" />
 
-          <div className=' mt-5 overflow-hidden'> 
+          <div className=' mt-5 overflow-hidden max-md:p-10'> 
           <h1 className='font-bold text-5xl mb-3 text-[#4a154b]'>FAQ</h1>
            <FAQItem question="Can I become a tutor? " answer="I'm a tutor article!
              See if you’re eligible to become a tutor with us and what the next steps are." />
