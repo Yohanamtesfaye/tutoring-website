@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import pre from '../assets/i1r.png';
-// import el from '../assets/el.jpg';
-// import m from '../assets/m.png';
-// import c2 from '../assets/c2.jpeg';
-// import g from '../assets/g.jpeg';
-// import i8 from '../assets/i8.jpeg';
-// import i12 from '../assets/i12.jpg';
+import pre from '../assets/pre.jpeg';
+import el from '../assets/el.jpg';
+import m from '../assets/m.png';
+import c2 from '../assets/c2.jpeg';
+import g from '../assets/g.jpeg';
+import i8 from '../assets/i8.jpeg';
+import i12 from '../assets/i12.jpg';
 import '../App.css';
 import Footer from '../Comonents/Footer';
 
@@ -37,7 +37,7 @@ export const Prices = () => {
           
           <div className='flex shadow-lg p-5 rounded-xl bg-white'>
             <div>
-              <img src={pre} alt='preschool' className='rounded-xl h-[100px] pl-3' />
+              <img src={el} alt='preschool' className='rounded-xl h-[100px] pl-3' />
             </div>
             <div className='mt-16'>
               <div className='mt-5 text-2xl font-serif  w-[135px]'>Elementary</div>
@@ -47,7 +47,7 @@ export const Prices = () => {
           </div>
           <div className='flex shadow-lg p-5 rounded-xl bg-white'>
             <div>
-              <img src={pre} alt='preschool' className='rounded-xl h-[100px] pl-3' />
+              <img src={m} alt='preschool' className='rounded-xl h-[100px] pl-3' />
             </div>
             <div className='mt-16'>
               <div className='mt-5 text-2xl font-serif   w-[135px]'>Middle</div>
@@ -57,7 +57,7 @@ export const Prices = () => {
           </div>
           <div className='flex shadow-lg p-5 rounded-xl bg-white'>
             <div>
-              <img src={pre} alt='preschool' className='rounded-xl  h-[100px] pl-3' />
+              <img src={c2} alt='preschool' className='rounded-xl  h-[100px] pl-3' />
             </div>
             <div className='mt-16'>
               <div className='mt-5 text-2xl font-serif   w-[135px]'>High</div>
@@ -70,16 +70,12 @@ export const Prices = () => {
         <div className={`grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ${fadeIn ? 'fade-in' : ''}`}>
           <div className='flex shadow-lg p-5 rounded-xl bg-white'>
             <div>
-              <img src={pre} alt='preschool' className='rounded-xl h-[100px] pl-3' />
-            </div>
-            <div className='mt-16'>
-              <div className='mt-5 text-2xl font-serif   w-[135px]'>Collage</div>
-              <div className='mb-5 font-bold'>💵 200 birr/ hr</div>
+              <img src={g} alt='preschool' className='rounded-xl h-[100px] pl-3' />
             </div>
           </div>
           <div className='flex shadow-lg p-5 rounded-xl bg-white'>
             <div>
-              <img src={pre} alt='preschool' className='rounded-xl h-[100px] pl-3' />
+              <img src={i8} alt='preschool' className='rounded-xl h-[100px] pl-3' />
             </div>
             <div className='mt-16'>
               <div className='mt-5 text-2xl font-serif   w-[135px]'>Grade 8</div>
@@ -88,7 +84,7 @@ export const Prices = () => {
           </div>
           <div className='flex shadow-lg p-5 rounded-xl bg-white'>
             <div>
-              <img src={pre} alt='preschool' className='rounded-xl h-[100px] pl-3' />
+              <img src={i12} alt='preschool' className='rounded-xl h-[100px] pl-3' />
             </div>
             <div className='mt-16'>
               <div className='mt-5 text-2xl font-serif   w-[135px]'>Grade 12</div>

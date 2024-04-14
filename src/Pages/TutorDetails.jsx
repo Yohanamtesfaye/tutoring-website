@@ -7,6 +7,7 @@ import { Button } from '@mantine/core';
 import loading from '../assets/loadingg.gif'
 import Footer from '../Comonents/Footer';
 import '../App.css';
+import avatar from '../assets/Avatar.jpg'
 const TutorDetails = () => {
   const [isLoading, setisLoading] = useState(true);
   const [fadeIn, setFadeIn] = useState(false);
@@ -22,16 +23,10 @@ const TutorDetails = () => {
       "is_virtual": type == 'virtual',
       "is_in_person": type == 'person'
   }
-    const res = await axios.post(`http://127.0.0.1:8000/core/api/tutor/${profileData.user}/${userId}/booking/`,data)
+    const res = await axios.post(`https://tutor-website-backend.onrender.com/core/api/tutor/${profileData.user}/${userId}/booking/`,data)
     console.log(res.data)
     
   }
-
-  // useEffect(() => {
-  //   axios.get(`http://127.0.0.1:8000/core/api/tutor/dashboard/`)
-  //     .then(res => setinfo(res.info))
-  //     .catch(err => console.log(err));
-  // }, [id]);
   const levels = {
 
     low:["Grade 1","Grade 2","Grade 3","Grade 4"],
@@ -53,7 +48,7 @@ const TutorDetails = () => {
 
   const fetch =async () => {
     try{
-    const res = await axios.get(`http://localhost:8000/user/api/profile/${id}/`)
+    const res = await axios.get(`https://tutor-website-backend.onrender.com/user/api/profile/${id}/`)
     setProfileData(res.data.user)
     console.log(res.data)
     setisLoading(false)
@@ -78,7 +73,7 @@ const TutorDetails = () => {
     <div>
     <div className='flex shadow-lg p-10 rounded-xl h-72 my-10 bg-white lg:ml-16 '>
         <div className='p-2  text-white font-bold'>
-         <img src={profileData.profile ?? 'https://img.freepik.com/premium-photo/3d-character-avatar_113255-5321.jpg'} className='h-52 w-52 object-contain' />
+         <img src={profileData.profile ?? avatar} className='h-52 w-52 object-contain' />
         </div> 
         <div className=' py-8 lg:ml-10'>
           <div className='font-serif mt-2 lg:text-lg text-sm  text-gray-500 font-bold'>{profileData.education}</div>

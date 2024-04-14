@@ -30,7 +30,6 @@ export const StudentRegistration = () => {
         username: '',
         full_name:'',
         email: '',
-        location:'',
         phone_number: '',
         location: '',
         subject:'',
@@ -70,13 +69,11 @@ export const StudentRegistration = () => {
         console.log(formData)
         setIsLoading(true)
         try{
-            let res = await axios.post('http://127.0.0.1:8000/user/api/studentRegistration/',formData)
+            let res = await axios.post('https://tutor-website-backend.onrender.com/user/api/studentRegistration/',formData)
             console.log(res.data)
             let data = res.data
             if(data.user !== undefined){
-            localStorage.setItem('username',data.user.username)
-            localStorage.setItem('full_name',data.user.full_name)
-            localStorage.setItem('email',data.user.email)
+                localStorage.setItem('email',data.user.email)
             setIsLoading(false)
             navigate('/email')
         }
@@ -152,21 +149,9 @@ export const StudentRegistration = () => {
                             <option value="Grade 10">Grade 10</option>
                             <option value="Grade 11">Grade 11</option>
                             <option value="Grade 12">Grade 12</option>
-                            <option value="Collage">Collage</option>
 
                          </select>
                     </div>
-                    <input
-                        className='hover:shadow-sm hover:shadow-[#4a154b] '
-                        type={question.type}
-                        name={question.name}
-                        placeholder={question.placeholder}
-                        autoComplete='off'
-                        onChange={handleChange}
-                        value={formData[questions[index].name]}
-                        required
-                />
-
                 <div className=' p-14 lg:grid grid-cols-3 gap-16'>
                     <div className=' text-center shadow-lg p-10 rounded-xl my-10 '>
                         <img src={kidner} width={100} height={100} className='max-w-full max-h-full mx-auto' />
@@ -174,27 +159,25 @@ export const StudentRegistration = () => {
                     </div>
                     <div className=' text-center shadow-lg p-10 rounded-xl my-10 '>
                         <img src={kids} width={100} height={100} className='max-w-full max-h-full mx-auto' />
-                        <h3 className='text-lg font-medium pt-8 pb-2'>Garde 1-12</h3>
+                        <h3 className='text-lg font-medium pt-8 pb-2'>elementary</h3>
                     </div>
                     <div className=' text-center shadow-lg p-10 rounded-xl my-10 '>
                         <img src={collage} width={100} height={100} className='max-w-full max-h-full mx-auto' />
-                        <h3 className='text-lg font-medium pt-8 pb-2'>University</h3>
+                        <h3 className='text-lg font-medium pt-8 pb-2'>High School</h3>
                     </div>
                 </div>
                 </>) : null}
                 {question.name === "location" ? (<>
                     <img src={location}  width={'150px'} className='lg:ml-72 ml-24 md:ml-64'/>
                     <p className='text-center leading-8 text-gray-600 font-bold max-w-md block mx-auto'>{question.des}</p>
-                    <input
-                        className='hover:shadow-sm hover:shadow-[#4a154b] '
-                        type={question.type}
-                        name={question.name}
-                        placeholder={question.placeholder}
-                        autoComplete='off'
-                        onChange={handleChange}
-                        value={formData[questions[index].name]}
-                        required
-                />
+                    <select name={question.name} onSelect={handleChange} onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 lg:px-72 ml-3 py-2 mb-5 rounded-lg ' id="">
+                            <option value="">Location</option>
+                            <option value="kality">Addis Ababa Kality</option>
+                            <option value="saris">Addis Ababa Saris</option>
+                            <option value="bole">Addis Ababa Bole</option>
+                            <option value="megenagna">Addis Ababa Megenagn</option>
+                            <option value="gotera">Addis Ababa Gotera</option>
+                         </select>
                 </>) : null}
 
             </div>):(

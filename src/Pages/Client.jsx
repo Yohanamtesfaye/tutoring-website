@@ -13,7 +13,7 @@ const Client = () => {
     setFadeIn(true);
   }, []);
   useEffect(()=>{
-    axios.get('http://127.0.0.1:8000/core/api/client/dashboard')
+    axios.get('https://tutor-website-backend.onrender.com/core/api/client/dashboard')
     .then(res=>{
       setdata(res.data)
       console.log(res.data)
@@ -32,6 +32,10 @@ const Client = () => {
       const res = initialData.filter(item => value == '' || item.level == value)
       setdata(res)
     }
+    else if(name == 'location') {
+      const res = initialData.filter(item => value == '' || item.location == value)
+      setdata(res)
+    }
 
 };
   return (
@@ -42,6 +46,16 @@ const Client = () => {
         <button className='px-4 py-2 mt-5 ml-4 bg-[#4a154b] font-bold text-white rounded-lg hover:text-[#4a154b] border hover:bg-white'>Book A Tutor</button>
       </div>
       <div className='lg:flex justify-between lg:px-40 mt-10'>
+        <div>
+          <select  name='location'   onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 px-28 py-1 rounded-lg ' id="">
+                <option value="">Location</option>
+                <option value="kality">Addis Ababa Kality</option>
+                <option value="saris">Addis Ababa Saris</option>
+                <option value="bole">Addis Ababa Bole</option>
+                <option value="megenagna">Addis Ababa Megenagn</option>
+                <option value="gotera">Addis Ababa Gotera</option>
+            </select>
+        </div>
       <div>
         <select name='subject' onChange={handleChange} className='inline-block bg-gray-100 border mt-5 font-bold text-gray-600 px-28 py-1 rounded-lg ' id="">
           <option value="">Subject</option>
@@ -53,7 +67,6 @@ const Client = () => {
           <option value="Other">Other</option>
       </select>
       </div>
-      
       <div>
         <select name='level' onChange={handleChange}  className='inline-block bg-gray-100  border mt-5 text-gray-600 font-bold px-28 py-1 rounded-lg ' id="">
           <option value="">Level</option>

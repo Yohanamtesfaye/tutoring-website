@@ -27,8 +27,9 @@ const Tutor = () => {
       "is_virtual": false,
       "is_in_person": false
   }
-    const res = await axios.post(`http://127.0.0.1:8000/core/api/client/${id}/${client_id}/booking/`,data)
+    const res = await axios.post(`https://tutor-website-backend.onrender.com/core/api/client/${id}/${client_id}/booking/`,data)
     console.log(res.data)
+    setStudents(prev=> prev.filter(item=>item.user != client_id))
   }
 
   const completeJob =async (job_id)=> {
@@ -36,16 +37,16 @@ const Tutor = () => {
     const data = {
       'end_date': date
   }
-    const res = await axios.put(`http://127.0.0.1:8000/core/api/ongoing-jobs/${job_id}/complete/`,data)
+    const res = await axios.put(`https://tutor-website-backend.onrender.com/core/api/ongoing-jobs/${job_id}/complete/`,data)
     console.log(res.data)
     await fetch()
   }
 
   const fetch = async () => {
     try{
-        const ress = await axios.get('http://127.0.0.1:8000/core/api/tutor/dashboard/')
-        const reson = await axios.get(`http://127.0.0.1:8000/core/api/ongoing-jobs/${id}/`)
-        const resco = await axios.get(`http://127.0.0.1:8000/core/api/completed-jobs/${id}/`)
+        const ress = await axios.get('https://tutor-website-backend.onrender.com/core/api/tutor/dashboard/')
+        const reson = await axios.get(`https://tutor-website-backend.onrender.com/core/api/ongoing-jobs/${id}/`)
+        const resco = await axios.get(`https://tutor-website-backend.onrender.com/core/api/completed-jobs/${id}/`)
 
         setStudents(ress.data);
         setOngoing(reson.data)

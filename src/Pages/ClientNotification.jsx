@@ -5,10 +5,27 @@ import { Link } from "react-router-dom";
 
 const ClientNotification = () => {
   const [notification, setNotification] = useState(null);
-
+  const handleClick =async (notify_id,is_approved) => {
+    try{
+      const data = {
+        is_approved: `${is_approved}`,
+        is_declined: `${!is_approved}`
+      }
+      const ress = await axios.put(`https://tutor-website-backend.onrender.com/${notify_id}/`,data)
+      console.log(ress.data)
+      fetch()
+  }catch(err){
+      console.log(err);
+  }
+  }
+  const fetch =async ()=> {
+    axios.get(`https://tutor-website-backend.onrender.com/core/api/client/dashboard/${id}/client-notifications/`)
+      .then(res => setNotification(res.data))
+      .catch(err => console.log(err));
+  }
   const id = localStorage.getItem('id')
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/core/api/client/dashboard/${id}/client-notifications/`)
+    axios.get(`https://tutor-website-backend.onrender.com/core/api/client/dashboard/${id}/client-notifications/`)
       .then(res => setNotification(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -45,9 +62,12 @@ const ClientNotification = () => {
                 </div>
                 {!notify.message.includes("approved") && (
                   <div>
-                    <button className=" w-1/4 rounded font-bold bg-gradient-to-r from-[#a1bec9] to-green-500 ">
-                  accept
-                </button>
+                    <button onClick={()=>handleClick(notify.id,true)} className='mr-2 mb-3 bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 py-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>
+                    Accept
+                  </button>
+                  <button onClick={()=>handleClick(notify.id,false)} className='mr-20 bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 py-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>
+                    Decline
+                  </button>
                 <Link to={`/tutordetail/${notify.tutor}`} className="font-bold mr-2">
                    View Detail
                   </Link>

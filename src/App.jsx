@@ -24,11 +24,14 @@ import Tracker from './Pages/Tracker';
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import Prices from './Pages/Prices';
+import TutorWaiting from './Pages/TutorWaiting';
 
 export const UserInfo = createContext()
 
 function App() {
   const [info,setInfo] = useState({username:'this is'})
+  const apiUrl = process.env.REACT_APP_API_URL;
+  console.log(apiUrl)
   return (
     <>
     <div>
@@ -45,7 +48,7 @@ function App() {
                 <Route path='/prices' element={<Prices/>}/>
                 <Route path='/client' element={<Client/>}/>
                 <Route path='/clientnotification' element={<ClientNotification/>}/>
-                <Route path='/tracker' element={<Tracker/>}/>
+                
               </Route>
               <Route>
                 <Route path='/register' element= {<Register/>}/>
@@ -59,8 +62,10 @@ function App() {
                 <Route path='/tutor' element={<Tutor/>}/>
                 <Route path='/tutornotification' element={<TutorNotification/>}/>
                 <Route path='/tutorprofile' element={<TutorProfile/>}/>
+                <Route path='/tracker' element={<Tracker/>}/>
               </Route>
               <Route path='/email' element={<Email/>}/>
+              <Route path='/waiting' element={<TutorWaiting/>}/>
         </Routes>
       </MantineProvider>
     

@@ -12,7 +12,7 @@ const ProfilePage = () => {
     setFile(e.target.files[0]) 
     const formData = new FormData();
     formData.append('profile',e.target.files[0])
-    const res = await axios.put(`http://localhost:8000/user/api/profile/${id}/`,formData)
+    const res = await axios.put(`https://tutor-website-backend.onrender.com/user/api/profile/${id}/`,formData)
     setProfileData(res.data.user)
   }
   useEffect(() => {
@@ -22,7 +22,7 @@ const ProfilePage = () => {
 
   const fetch =async () => {
     try{
-    const res = await axios.get(`http://localhost:8000/user/api/profile/${id}/`)
+    const res = await axios.get(`https://tutor-website-backend.onrender.com/user/api/profile/${id}/`)
     setProfileData(res.data.user)
     console.log(res.data)
     }catch(err){
@@ -41,20 +41,20 @@ const ProfilePage = () => {
     <img src={loading}  alt="" />
   </div>;
   }
-  console.log('http://localhost:8000' + profileData.profile)
+  console.log('https://tutor-website-backend.onrender.com' + profileData.profile)
   return (
     <div className={`fullscreen ${fadeIn ? 'fade-in' : ''}`}>
       <div className="profile-card">
         <div className='top'>
           <div className='top1'>    
-      {profileData.profile != null ?(<img className="profile-image" src={'http://localhost:8000' + profileData.profile} alt="Profile" />):<input onChange={handlefile} type='file'/>}
+      {profileData.profile != null ?(<img className="profile-image" src={'https://tutor-website-backend.onrender.com' + profileData.profile} alt="Profile" />):<input onChange={handlefile} type='file'/>}
       </div>
       <div className='top2'>  
 
         <h1 className="profile-name1">{profileData.full_name}</h1>
         <p className="profile-name">Phone Number: {profileData.phone_number}</p>
         <p className="profile-name">Email: {profileData.email}</p>
-        <p className="profile-name">Location: {profileData.location}</p>
+        <p className="profile-name">Location: {profileData.location}</p>z
         
         </div>
            </div>

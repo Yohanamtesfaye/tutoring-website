@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { BiBell } from 'react-icons/bi';
-
+import logo from '../assets/logoo.png'
 const Navbar = () => {
   const username = localStorage.getItem('username');
   const name = localStorage.getItem('full_name');
@@ -34,9 +34,9 @@ const Navbar = () => {
   return (
     <>
     
-      <div className='flex justify-between bg-white p-10 font-bold'>
+      <div className='flex justify-between bg-white p-5 font-bold'>
         <div className='text-black'>
-          Logo
+        <div><img src={logo} alt="logo" width={'50px'} /></div>
         </div>
         <div className='flex text-black '>
           <div className='md:flex hidden'>
@@ -45,13 +45,12 @@ const Navbar = () => {
             {username == null ? (
               <>
                 <Link className='mr-10 hover:text-gray-400' to='/register'>Register</Link>
-                <Link to='login' className='mr-8 bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 py-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>Login</Link>
-                <Link to='/register' className='bg-[#4a154b] px-5 py-1 font-bold text-white rounded-lg hover:text-[#4a154b] border hover:bg-white'>Sign Up</Link>
+                <Link to='login' className='mr-8 bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 pt-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>Login</Link>
+                <Link to='/register' className='bg-[#4a154b] px-5 pt-1  font-bold text-white rounded-lg hover:text-[#4a154b] border hover:bg-white'>Sign Up</Link>
               </>
             ) : (
               <>
                 <Link className='mr-8 hover:text-gray-400' to='/client'>Find a tutor</Link>
-                <Link to='/tracker' className='mr-8 hover:text-gray-400 '>Tracker</Link>
                 <Link to='/clientnotification' className='text-4xl mr-8 text-[#4a154b] '><BiBell/></Link>
                 <p onClick={handleLogout} className='bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 py-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>Logout</p>
               </>

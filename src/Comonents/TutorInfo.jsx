@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import avatar from '../assets/Avatar.jpg'
 const TutorInfo = ({data}) => {
-  const id = data.id;
+  const id = data.user ;
   const value = `/tutordetail/${id}`;
   return (
     <Link to={value}>
     <div className=' mx-5 flex shadow-lg p-3 rounded-xl my-3 bg-white transition-transform hover: hover:shadow- hover:-translate-y-1'>
      <div className='w-1/2'>
      <div className='p-2  text-white font-bold'>
-         <img src={data.profile ?? 'https://img.freepik.com/premium-photo/3d-character-avatar_113255-5321.jpg'} className='h-52 w-52 object-contain' />
+         <img src={data.profile ?? avatar} className='h-52 w-52 object-contain' />
         </div> 
         {/* <div className='px-3'>5⭐ <FaMapMarkerAlt className='inline-block text-red-500 ml-12 mr-1'/> {data.location}</div> */}
      </div> 

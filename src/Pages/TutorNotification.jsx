@@ -5,7 +5,7 @@ import React, { useState,useEffect } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const TutorNotification = ({notification,setNotification }) => {
+const TutorNotification = ({notification,setNotification,fetch }) => {
   
   const id = localStorage.getItem('id')
   function markAllUnread(){
@@ -26,8 +26,9 @@ const TutorNotification = ({notification,setNotification }) => {
         is_approved: `${is_approved}`,
         is_declined: `${!is_approved}`
       }
-      const ress = await axios.put(`http://127.0.0.1:8000/core/api/tutor/dashboard/${id}/tutor-notifications/${notify_id}/`,data)
+      const ress = await axios.put(`https://tutor-website-backend.onrender.com/${id}/tutor-notifications/${notify_id}/`,data)
       console.log(ress.data)
+      await fetch()
       // setNotification(///z);
 
   }catch(err){
@@ -66,17 +67,15 @@ const TutorNotification = ({notification,setNotification }) => {
                 <div className="text- font-bold">
                  {notify.message}
                 </div>
-                <div className="mt-3">
+                {!notify.message.includes("approved") && (<div className="mt-3">
                   <button onClick={()=>handleClick(notify.id,true)} className='mr-2 mb-3 bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 py-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>
                     Accept
                   </button>
                   <button onClick={()=>handleClick(notify.id,false)} className='mr-20 bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 py-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>
                     Decline
                   </button>
-                </div>
-                <Link to="/tutordetail/:id" className="font-bold mr-2 text-[#4a154b] mt-5">
-                    View Details
-                  </Link>
+                </div>)}
+                
                 <div className="text-blue-500">{notify.created_at}</div>
               </div>
               {notify.isUnread && (

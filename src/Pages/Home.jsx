@@ -1,5 +1,9 @@
 import Typewriter from 'typewriter-effect';
 import React, { useContext, useEffect, useState } from 'react'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import HomeData from '../HomeData';
 import FAQItem from '../Comonents/FAQItem';
 import image1  from '../assets/i1r.png';
 import image2  from '../assets/i2r.png';
@@ -28,15 +32,30 @@ const Home = () => {
   console.log(info)
   const [data, setdata] = useState([]);
   useEffect(()=>{
-    axios.get('http://127.0.0.1:8000/core/api/client/dashboard')
+    axios.get('https://tutor-website-backend.onrender.com/core/api/client/dashboard')
     .then(res=>setdata(res.data))
     .catch(err=> console.log(err));
   },[])
   const handleClick = (data) => {
     setInfo(data)
+
   }
   const username = localStorage.getItem('username')
   const name = localStorage.getItem('full_name')
+  var settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
+    dots: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true
+  };
+
   return (
     <>
     <div className={`bg-white font-serif h-screen text-black ${fadeIn ? 'fade-in' : ''}`}>
@@ -79,49 +98,29 @@ const Home = () => {
            
           
           </> }
-
           {username == null ? <>
-            <div className='bg-[#F4EDE4] flex flex-col py-10 '>
-              <div className='flex justify-center font-bold text-center text-4xl mb-5 p-3'>Explore Our Grade Options</div>
-              <div className='lg:flex justify-center mb-10' >
+            <div className='bg-[#F4EDE4] '>
+              <div className='flex justify-center font-bold text-center text-4xl mb-5 p-3  '>Explore Our Grade Options</div>
+              <div > 
+              <Slider {...settings}  > 
+              {HomeData.map((option, index) => (
+               
+              <div key={index} className='lg:flex justify-center mb-10  flex flex-col py-10   ' >
               <div className=' ml-10 mr-10 flex shadow-lg p-10 rounded-xl px-2 my-10 bg-white '>
-              <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold'>
-                1
+              <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold '>
+                {option.id}
               </div> 
-              <div className=' mt-16'>
-                <div className='mt-5 text-2xl font-serif font-bold'>Preschool </div>
-                <div className='mb-5 text-lg'> We offer captivating tours crafted for preschoolers, blending fun and learning in an interactive environment. </div>
-              </div>
-             </div>
-             <div className=' ml-10 mr-10 flex shadow-lg p-10 px-2 rounded-xl my-10 bg-white '>
-              <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold'>
-                2
-              </div> 
-              <div className=' mt-16'>
-                <div className='mt-5 text-2xl font-serif font-bold'>Elementary School </div>
-                <div className='mb-5 text-lg'> We offer captivating tours crafted for preschoolers, blending fun and learning in an interactive environment. </div>
-              </div>
-             </div>
-             <div className=' ml-10 mr-10 flex shadow-lg p-10 rounded-xl my-10 bg-white '>
-              <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold'>
-                3
-              </div> 
-              <div className=' mt-16'>
-                <div className='mt-5 text-2xl font-serif font-bold'>Middle </div>
-                <div className='mb-5 text-lg'> We offer captivating tours crafted for preschoolers, blending fun and learning in an interactive environment. </div>
-              </div>
-             </div>
-           
-             <div className=' ml-10 mr-10 flex shadow-lg p-10 rounded-xl my-10 bg-white '>
-              <div className='bg-[#4a154b] border border-[#4a154b] p-2 h-10 text-white font-bold'>
-                4
-              </div> 
-              <div className=' mt-16'>
-                <div className='mt-5 text-2xl font-serif font-bold'>Collage </div>
-                <div className='mb-5 text-lg'> We offer captivating tours crafted for preschoolers, blending fun and learning in an interactive environment. </div>
+              <div className=' mt-10'>
+                <div className='mt-5 text-2xl font-serif font-bold'>{option.name} </div>
+                <div className='mb-5 text-lg'>{option.descp} </div>
               </div>
              </div>
               </div>
+             
+                 ))}
+             </Slider>
+            </div>
+
               </div>
               <div className='lg:flex justify-between bg-[#F4EDE4]  items-center'>
               <div className='animated-img p-8'>

@@ -1,12 +1,14 @@
 import React from 'react'
-import celebrate from '../assets/celebrate.gif'
+import logo from '../assets/logoo.png'
 import { AiOutlineMail } from 'react-icons/ai';
 
 const Email = () => {
   const email = localStorage.getItem('email')
   return (
     <>
-    <p className='text-center mt-20 font-bold text-4xl mb-28'>AT</p>
+   <div className='flex justify-center items-center '>
+     <img src={logo} width={'100px'} className='mt-20 font-bold text-4xl mb-20'/>
+    </div> 
     <div className='flex-row text-center justify-center items-center mt-5'>
       <div className='font-bold text-4xl mb-5 text-[#4a154b]'>Verfy Your Email</div>
       <div className='text-lg'>We have sent an Email to </div>

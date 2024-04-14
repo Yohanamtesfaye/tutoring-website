@@ -27,9 +27,12 @@ const UserLogin = () => {
       }
       console.log(data)
       try{
-        let res = await axios.post('http://127.0.0.1:8000/user/api/login/',formData)
+        console.log("data")
+
+        let res = await axios.post('https://tutor-website-backend.onrender.com/user/api/login/',formData)
         console.log(res.data)
         let data = res.data
+        console.log(data)
         if(data.user !== undefined){
         localStorage.setItem('username',data.user.username)
         localStorage.setItem('full_name',data.user.full_name)
@@ -41,7 +44,7 @@ const UserLogin = () => {
         data.user.role != "P" ? navigate('/tutor') : navigate('/')
         }
       }catch (err){
-            console.log(err)
+            console.log("err")
             setErrors(err.response.data.detail)
       }
    

@@ -3,19 +3,27 @@
 import { useEffect, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { Badge } from "antd";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import axios from "axios";
 import TutorNotification from "../Pages/TutorNotification";
-
+import logo from '../assets/logoo.png'
 const TutrorNav = () => {
   const [notification, setNotification] = useState([]);
   const [notify, setNotify] = useState(false);
-
+  
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    localStorage.removeItem('full_name');
+    localStorage.removeItem('email');
+    localStorage.removeItem('isVerified');
+    navigate('/login');
+  };
   const fetch = async () => {
     const id = localStorage.getItem('id')
     try{
-        const ress = await axios.get(`http://127.0.0.1:8000/core/api/tutor/dashboard/${id}/tutor-notifications/`)
+        const ress = await axios.get(`https://tutor-website-backend.onrender.com/core/api/tutor/dashboard/${id}/tutor-notifications/`)
         console.log(ress.data)
         setNotification(ress.data);
 
@@ -38,7 +46,7 @@ const TutrorNav = () => {
           notify && setNotify(!notify);
         }}
       >
-        <div>Logo</div>
+        <div><img src={logo} alt="logo" width={'50px'} /></div>
         <div className="flex px-10">
           <Link to="/tutor" className="text-[#4a154b] font-bold hover:text-gray-200 mr-6">
             Home
@@ -57,6 +65,7 @@ const TutrorNav = () => {
           <Link to="/tutorprofile" className="text-4xl text-[#4a154b]mr-6">
             <AiOutlineUser />
           </Link>
+          <p onClick={handleLogout} className='bg-[#4a154b] text-white font-bold border border-[#4a154b] px-6 py-1 hover:text-[#4a154b] hover:bg-white rounded-lg'>Logout</p>
         </div>
       </div>
 
@@ -65,6 +74,7 @@ const TutrorNav = () => {
             <TutorNotification
             notification={notification}
             setNotification={setNotification}
+            fetch={fetch}
           />
         </div>
       )}

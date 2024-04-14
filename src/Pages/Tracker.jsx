@@ -47,7 +47,7 @@ const SessionBooking = ({ doctor }) => {
     "2024-04-12",
   ]);
   const selectJob = async(id)=> {
-    const res = await axios.get(`http://127.0.0.1:8000/core/api/tracker/${id}/`)
+    const res = await axios.get(`https://tutor-website-backend.onrender.com/core/api/tracker/${id}/`)
     setValue(id)
     setHighlitedDays(res.data)
   }
@@ -58,7 +58,7 @@ const SessionBooking = ({ doctor }) => {
       day: date
     }
     console.log(data)
-    const res = await axios.put(`http://127.0.0.1:8000/core/api/tracker/${value}/`,data)
+    const res = await axios.put(`https://tutor-website-backend.onrender.com/core/api/tracker/${value}/`,data)
     // setValue(id)
     setHighlitedDays(res.data)
   }
@@ -66,7 +66,7 @@ const SessionBooking = ({ doctor }) => {
   const today = dayjs();
   const fetch = async () => {
     try{
-        const reson = await axios.get(`http://127.0.0.1:8000/core/api/ongoing-jobs/${id}/`)
+        const reson = await axios.get(`https://tutor-website-backend.onrender.com/core/api/ongoing-jobs/${id}/`)
         setOngoing(reson.data)
     }catch(err){
         console.log(err);
